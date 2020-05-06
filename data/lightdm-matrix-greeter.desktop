@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=LightDM Matrix Greeter
+Comment=LightDm Matrix Greeter
+Exec=lightdm-matrix-greeter
+Type=Application
+

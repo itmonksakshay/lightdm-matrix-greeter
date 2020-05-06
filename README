@@ -1,0 +1,5 @@
+# Lightdm-matrix-greeter
+login greeter for lightdm
+user can login to any user with the greeter
+please change variable session before to according to your GUI name
+providing shutdown,restart,sleep,hibernate function at login window

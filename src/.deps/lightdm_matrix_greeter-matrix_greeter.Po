@@ -664,7 +664,7 @@ lightdm_matrix_greeter-matrix_greeter.o: matrix_greeter.c \
  /usr/include/lightdm-gobject-1/lightdm/session.h \
  /usr/include/lightdm-gobject-1/lightdm/system.h \
  /usr/include/lightdm-gobject-1/lightdm/user.h ../config.h \
- ../src/lightdm-matrix-greeter-ui.h
+ ../src/lightdm-matrix-greeter-ui.h ../src/lightdm-matrix-greeter-css.h
 
 /usr/include/stdc-predef.h:
 
@@ -2193,3 +2193,5 @@ lightdm_matrix_greeter-matrix_greeter.o: matrix_greeter.c \
 ../config.h:
 
 ../src/lightdm-matrix-greeter-ui.h:
+
+../src/lightdm-matrix-greeter-css.h:

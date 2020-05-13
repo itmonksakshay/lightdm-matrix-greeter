@@ -2,30 +2,118 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkDialog" id="matrix_dialog_command">
+   <property name="name">matrix_dialog_command</property>
+   <property name="can_focus">True</property>
+   <property name="modal">True</property>
+   <property name="default_width">275</property>
+   <property name="default_height">130</property>  
+   <property name="type_hint">dialog</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="matrix_dialog_command_box">
+      <property name="name">matrix_dialog_command_box</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">1</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="matrix_dialog_command_button_box">
+      	    <property name="name">matrix_dialog_command_button_box</property>
+            <property name="can_focus">False</property>
+            <property name="margin_bottom">8</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="matrix_dialog_command_action_button">
+      		<property name="name">matrix_dialog_command_action_button</property>
+                <property name="label" translatable="yes">button</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_left">5</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="matrix_dialog_command_button_cancel">
+      		<property name="name">matrix_dialog_command_button_cancel</property>
+                <property name="label" translatable="yes">button</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_left">15</property>
+                <property name="margin_right">7</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="matrix_dialog_info_label">
+      	    <property name="name">matrix_dialog_info_label</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">label</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">13</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">matrix_dialog_command_action_button</action-widget>
+      <action-widget response="1">matrix_dialog_command_button_cancel</action-widget>
+    </action-widgets>
+  </object>
+
   <object class="GtkWindow" id="matrix_greeter_window">
+      <property name="name">matrix_greeter_window</property>
     <property name="can_focus">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
     <child>
       <object class="GtkOverlay" id="matrix_greeter_overlay">
+      <property name="name">matrix_greeter_overlay</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
           <object class="GtkBox" id="matrix_box_container">
+      	    <property name="name">matrix_box_container</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="valign">baseline</property>
             <property name="vexpand">True</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">200</property>
-            <property name="baseline_position">center</property>
+            <property name="spacing">124</property>
+            <property name="baseline_position">bottom</property>
             <child>
               <object class="GtkBox" id="matrix_header_box">
+      		<property name="name">matrix_header_box</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkImage" id="matrix_header_logo">
+      		    <property name="name">matrix_header_logo</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_top">17</property>
@@ -41,6 +129,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="matrix_hostname_label">
+      		    <property name="name">matrix_hostname_label</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">[HostName]</property>
@@ -62,11 +151,13 @@
             </child>
             <child>
               <object class="GtkBox" id="matrix_login_box">
+       		<property name="name">matrix_login_box</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox" id="matrix_login_input_box">
+      		    <property name="name">matrix_login_input_box</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -74,6 +165,7 @@
                     <property name="margin_top">14</property>
                     <child>
                       <object class="GtkLabel" id="matrix_input_label">
+      			<property name="name">matrix_input_label</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_right">12</property>
@@ -88,6 +180,7 @@
                     </child>
                     <child>
                       <object class="GtkEntry" id="matrix_user_entry">
+        		<property name="name">matrix_user_entry</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -106,6 +199,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="matrix_response_label">
+       		    <property name="name">matrix_response_label</property>
                     <property name="name">matrix_response_label</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -127,14 +221,17 @@
             </child>
             <child>
               <object class="GtkBox" id="matrix_command_box">
+        	<property name="name">matrix_command_box</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_top">23</property>
-                <property name="margin_bottom">15</property>
+                <property name="valign">baseline</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">8</property>
+                <property name="baseline_position">bottom</property>
                 <child>
                   <object class="GtkButton" id="matrix_shutdown_button">
+      		    <property name="name">matrix_shutdown_button</property>
                     <property name="label" translatable="yes">shutdown</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -150,6 +247,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="matrix_restart_button">
+      		    <property name="name">matrix_restart_button</property>
                     <property name="label" translatable="yes">restart</property>
                     <property name="name">matrix</property>
                     <property name="visible">True</property>
@@ -164,6 +262,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="matrix_hibernate_button">
+     		    <property name="name">matrix_hibernate_button</property>
                     <property name="label" translatable="yes">hibernate</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -175,9 +274,10 @@
                     <property name="fill">True</property>
                     <property name="position">2</property>
                   </packing>
-	  	</child>
-		 <child>
+                </child>
+                <child>
                   <object class="GtkButton" id="matrix_sleep_button">
+      		    <property name="name">matrix_sleep_button</property>
                     <property name="label" translatable="yes">sleep</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -190,11 +290,11 @@
                     <property name="position">3</property>
                   </packing>
                 </child>
-             </object>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">35</property>
               </packing>
             </child>
           </object>

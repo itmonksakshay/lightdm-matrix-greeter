@@ -1,0 +1,8 @@
+ #matrix_dialog_command {
+    background-color: #262626;
+}
+ #matrix_dialog_info_label {
+    color: blue;
+    margin-top: 15px;
+    font-size: 18px;
+}

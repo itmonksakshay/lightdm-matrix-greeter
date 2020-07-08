@@ -1,4 +1,4 @@
-AC_INIT([lightdm-matrix-greeter],[1.0.0],[akshay.bhatt@hotmail.com])
+AC_INIT([lightdm-matrix-greeter],[3.0.0],[akshay.bhatt@hotmail.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AM_PROG_CC_C_O

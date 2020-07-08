@@ -5,7 +5,12 @@ light_matrix_greeter_built_sources =\
 				    lightdm-matrix-greeter-ui.h\
 				    lightdm-matrix-greeter-css.h
 
-lightdm_matrix_greeter_SOURCES = $(light_matrix_greeter_built_sources) matrix_greeter.c
+lightdm_matrix_greeter_SOURCES =\
+			       	$(light_matrix_greeter_built_sources)\
+			       	matrix_greeter.c
+AM_CPPFLAGS = \
+	-DGREETER_DATA_DIR=\""$(datadir)/lightdm-matrix-greeter"\" \
+	-DCONFIG_FILE=\""$(sysconfdir)/lightdm/lightdm-matrix-greeter.conf"\"      
 
 
 lightdm_matrix_greeter_CFLAGS = $(GTK_CFLAGS) $(GMODULE_CFLAGS) $(LIGHTDMGOBJECT_CFLAGS)

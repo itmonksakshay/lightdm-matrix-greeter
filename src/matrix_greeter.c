@@ -1,7 +1,7 @@
+#include<config.h>
 #include<stdio.h>
 #include<gtk/gtk.h>
 #include<lightdm.h>
-#include<config.h>
 #include<string.h>
 #include<unistd.h>
 #include"src/lightdm-matrix-greeter-ui.h"
@@ -9,7 +9,7 @@
 
 GtkBuilder *builder;
 GtkCssProvider *css_provider;
-GtkWidget *main_window,*main_overlay,*command_dialog;
+GtkWidget *main_window,*main_overlay,*command_dialog,*main_container;
 GtkEntry *user_entry;
 GtkLabel *hostname_label,*user_entry_label,*status_response_label,*dialog_info_label;
 GtkEntry *user_entry_field;
@@ -24,6 +24,9 @@ GdkScreen *screen;
 GdkDisplay *display;
 GdkMonitor *monitor;
 GdkRectangle geometry;
+gchar *path;
+static GdkPixbuf *bgimage;
+static GdkPixbufAnimation *bganimation;
 
 typedef struct dialog_data_struct {
 
@@ -175,11 +178,45 @@ static void authentication_complete_cb (LightDMGreeter *ldm) {
     }
   	    lightdm_greeter_authenticate (ldm, NULL, NULL);
 }
+gboolean load_pixbuf(const char *filename){
+    GError *error = NULL;
+    GdkPixbufAnimation *pixbuf = gdk_pixbuf_animation_new_from_file(filename, &error); 
+    	if (pixbuf == NULL){
+        	g_print ("Error loading file: %d : %s\n", error->code, error->message);
+       	 	g_error_free (error);
+        	exit(1);
+    	}
+	if(gdk_pixbuf_animation_is_static_image(pixbuf)){
+		bgimage = gdk_pixbuf_animation_get_static_image(pixbuf);
+		return TRUE;
+	}
+	else{
+		bganimation  = pixbuf;
+	}
+	return FALSE;
+}
 
 int main(int argc,char **argv){
+
+	gchar *value,*default_theme_name;
+	GKeyFile *config;
+	GtkWidget *image,*image_overlay;
+	static gboolean is_image;
 		
 	gtk_init(&argc,&argv);
+	
+	config = g_key_file_new ();
+   	g_key_file_load_from_file (config, CONFIG_FILE, G_KEY_FILE_NONE, &error);
+    	if (error && !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT)){
+        	g_warning ("Failed to load configuration from %s: %s\n", 
+				CONFIG_FILE, error->message);
+	}
+    	g_clear_error (&error);
 
+
+	gdk_window_set_cursor(gdk_get_default_root_window(),
+			    gdk_cursor_new_for_display(gdk_display_get_default(), 
+				    GDK_LEFT_PTR));
 	css_provider = gtk_css_provider_new ();
     	gtk_css_provider_load_from_data (css_provider,matrix_lightdm_css,
 			matrix_lightdm_css_length, NULL);
@@ -195,13 +232,21 @@ int main(int argc,char **argv){
 		return EXIT_FAILURE;
 	}
 	g_clear_error(&error);
-
-
+	
+/*	value = g_key_file_get_value (config,"greeter","theme-name", NULL);
+    	if(value){
+        	g_debug ("Using Gtk+ theme %s", value);
+        	g_object_set (gtk_settings_get_default (), "gtk-theme-name", value, NULL);
+    	}
+    	g_free (value);
+    	g_object_get (gtk_settings_get_default (), "gtk-theme-name", &default_theme_name, NULL);
+    	g_debug ("Default Gtk+ theme is '%s'", default_theme_name);*/
 
 	main_window = GTK_WIDGET(gtk_builder_get_object(builder, "matrix_greeter_window"));
 	main_overlay = GTK_WIDGET(gtk_builder_get_object(builder,"matrix_greeter_overlay"));
 	main_logo = GTK_IMAGE(gtk_builder_get_object(builder,"matrix_header_logo"));
 	
+	main_container = GTK_WIDGET(gtk_builder_get_object(builder,"matrix_box_container"));
 
 	hostname_label = GTK_LABEL(gtk_builder_get_object(builder,"matrix_hostname_label"));
 	
@@ -224,25 +269,43 @@ int main(int argc,char **argv){
     	gdk_monitor_get_geometry(gdk_display_get_primary_monitor(gdk_display_get_default()), 
 			&geometry);
     	gtk_window_set_default_size(GTK_WINDOW(main_window),geometry.width,geometry.height);
-	
-	gtk_widget_show(GTK_WIDGET(main_window));
 
+	
+	
 	g_signal_connect(user_entry_field,"activate",G_CALLBACK(login_cb), NULL);
 
-	gtk_label_set_text(hostname_label,lightdm_get_hostname());
-
+	
+	value = g_key_file_get_value (config, "greeter", "background", NULL);
+	image_overlay = gtk_overlay_new();
+	if(value){
+		path = g_build_filename(GREETER_DATA_DIR,value, NULL);
+		is_image  = load_pixbuf(path);
+		if(is_image){
+			image = gtk_image_new_from_pixbuf(bgimage);
+			gtk_overlay_add_overlay(GTK_OVERLAY(main_overlay),image);
+		}else{
+			image = gtk_image_new_from_animation(bganimation);
+			gtk_overlay_add_overlay (GTK_OVERLAY(main_overlay),image);
+		}
+	}
+	gtk_widget_unparent(main_container);
+ 	gtk_overlay_add_overlay (GTK_OVERLAY (main_overlay),main_container);
+	gtk_widget_show_all(GTK_WIDGET(main_window));
 	//Hostname
+	
+	gtk_label_set_text(hostname_label,lightdm_get_hostname());
 		
+	//lightdm greeter signals
 	greeter = lightdm_greeter_new();
 	g_signal_connect (greeter, "show-prompt", G_CALLBACK (show_prompt_cb), NULL);
     	g_signal_connect (greeter, "authentication-complete",
 		       	G_CALLBACK (authentication_complete_cb), NULL);
 	
 
-	if(!lightdm_greeter_connect_to_daemon_sync(greeter,NULL)){
+/*	if(!lightdm_greeter_connect_to_daemon_sync(greeter,NULL)){
 	 	return EXIT_FAILURE;
 	}
-
+*/
 	main_loop = g_main_loop_new (NULL, 0);
 
     	// start main loop

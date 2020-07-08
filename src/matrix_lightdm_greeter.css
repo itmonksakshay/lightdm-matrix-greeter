@@ -1,8 +1,95 @@
+ window label {
+font-style: italic;
+font-variant:small-caps;
+font-weight:bold;
+font-size:18px;
+font-family: Georgia, serif;
+color:#00FF00;
+
+ }
  #matrix_dialog_command {
     background-color: #262626;
 }
- #matrix_dialog_info_label {
-    color: blue;
+button{
+	border-style:none;
+	background-image:none;
+    	background-color:#262626;
+	color:#00FF00;
+	border-radius:10px;
+}
+#matrix_dialog_info_label {
     margin-top: 15px;
     font-size: 18px;
 }
+#matrix_box_container{
+
+}
+/*top vertical container*/
+#matrix_header_box{
+	padding-top:50px;
+
+}
+#matrix_header_logo{
+	padding-top:10px;
+}
+#matrix_hostname_label{
+	padding-top:20px;
+	padding-bottom:10px;
+}
+/*middle vertical container*/
+#matrix_login_box{
+	padding-top:80px;
+
+}
+/* middle vertical child for inputbox and inputlabel*/
+#matrix_login_input_box{
+
+
+}
+#matrix_input_label{
+
+	padding-right:10px;
+}
+#matrix_user_entry{
+
+	color:#00FF00;
+	background-color:transparent;
+	border:1px solid #00FF00 ;
+	border-radius:10px;
+
+
+}
+/*middle vertical second child for responselabel*/
+
+#matrix_response_label{
+
+	padding-top:20px;
+
+}
+
+/*bottom vertical box*/ 
+
+
+#matrix_command_box{
+	margin-top:300px;
+}
+
+#matrix_shutdown_button{
+	margin-right:20px;
+
+}
+#matrix_restart_button{
+	margin-right:20px;
+}
+
+#matrix_hibernate_button{
+	margin-right:20px;
+}
+
+#matrix_sleep_button{
+
+}
+
+
+
+

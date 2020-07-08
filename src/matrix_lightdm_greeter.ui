@@ -22,7 +22,6 @@
           <object class="GtkButtonBox" id="matrix_dialog_command_button_box">
       	    <property name="name">matrix_dialog_command_button_box</property>
             <property name="can_focus">False</property>
-            <property name="margin_bottom">8</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="matrix_dialog_command_action_button">
@@ -31,7 +30,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">5</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -46,8 +44,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">15</property>
-                <property name="margin_right">7</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -103,7 +99,6 @@
             <property name="valign">baseline</property>
             <property name="vexpand">True</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">124</property>
             <property name="baseline_position">bottom</property>
             <child>
               <object class="GtkBox" id="matrix_header_box">
@@ -116,7 +111,6 @@
       		    <property name="name">matrix_header_logo</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_top">17</property>
                     <property name="ypad">5</property>
                     <property name="pixel_size">68</property>
                     <property name="icon_name">computer</property>
@@ -162,13 +156,11 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">end</property>
-                    <property name="margin_top">14</property>
                     <child>
                       <object class="GtkLabel" id="matrix_input_label">
       			<property name="name">matrix_input_label</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="margin_right">12</property>
                         <property name="label" translatable="yes">[prompt_input]</property>
                         <property name="ellipsize">end</property>
                       </object>
@@ -203,7 +195,6 @@
                     <property name="name">matrix_response_label</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_top">10</property>
                     <property name="label" translatable="yes">[response_label]</property>
                   </object>
                   <packing>
@@ -226,8 +217,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">baseline</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">8</property>
                 <property name="baseline_position">bottom</property>
                 <child>
                   <object class="GtkButton" id="matrix_shutdown_button">
@@ -237,7 +226,6 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">center</property>
-                    <property name="margin_right">21</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -249,7 +237,6 @@
                   <object class="GtkButton" id="matrix_restart_button">
       		    <property name="name">matrix_restart_button</property>
                     <property name="label" translatable="yes">restart</property>
-                    <property name="name">matrix</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -267,7 +254,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="margin_left">21</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -281,8 +267,7 @@
                     <property name="label" translatable="yes">sleep</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_left">21</property>
+                    <property name="receives_default">False</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>

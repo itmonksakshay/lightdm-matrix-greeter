@@ -302,10 +302,10 @@ int main(int argc,char **argv){
 		       	G_CALLBACK (authentication_complete_cb), NULL);
 	
 
-/*	if(!lightdm_greeter_connect_to_daemon_sync(greeter,NULL)){
+	if(!lightdm_greeter_connect_to_daemon_sync(greeter,NULL)){
 	 	return EXIT_FAILURE;
 	}
-*/
+
 	main_loop = g_main_loop_new (NULL, 0);
 
     	// start main loop
